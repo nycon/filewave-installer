@@ -1,29 +1,21 @@
 #!/bin/bash
 #============================================================================
-#title          :filewaveinstaller.sh
+#title          :filewaveAIO.sh
 #description    :Install and Update Script for Filewave.
 #author         :Marco Stoeckle dq-solutions
-#date           :2020-02-04
+#date           :2020-02-11
 #version        :0.1
-#usage          :./filewave.sh
+#usage          :./filewaveAIO.sh
 #notes          :
 #bash_version   :
 #============================================================================
-#============================================================================
-### Revision History:
-##
-##	Date	      Version			Personnel			Notes
-##	----	      -------			----------------	-----
-##	2020-02-04	  0.1			    Marco Stoeckle   	Script created
-##	
-#============================================================================
-#
+
 GREEN='\033[0;32m'
 NC='\033[0m'
 fwversion='fwcontrol server version'
 
 function download {
-	# not deposited for licensing reasons
+	# Check the README for instructions
   wget "https://xxx.xxxxxxxx/${version}/FileWave_Linux_${version}.zip"
 }
 
