@@ -18,7 +18,7 @@ Filewave installer for Linux
 2 - Installation Filewave Booster
 3 - Setup Filewave Backup Script
 4 - Filewave Update
-0 - exit program
+0 - exit programm
 Enter selection:
 ```
 ### Install Script
