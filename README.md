@@ -11,7 +11,7 @@ Nach eintragen des Links kann man den installer verweden.
 ### Install Script
 
 ```bash
-git clone .....
+git clone https://github.com/nycon/filewave-installer.git
 cd filewave-installer
 ./filewave-installer.sh
 ```
