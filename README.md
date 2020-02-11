@@ -1,5 +1,5 @@
 # FileWave Multiple install update Script
-Dises Script is eine All-in-One Scritp für Filewave Installationen 
+All-in-One Scritp für Filewave Installationen 
 
 ## Voraussetzungen
 Für die richtige funktion des Scriptes ist ein Filewave Account voraussetzung!
