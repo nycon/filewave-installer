@@ -153,7 +153,7 @@ until [ "$selection" = "0" ]; do
 	 echo -e "${GREEN}2 - Installation Filewave Booster${NC}"
 	 echo -e "${GREEN}3 - Setup Filewave Backup Script${NC}"
 	 echo -e "${GREEN}4 - Filewave Update${NC}"
-	 echo -e "${GREEN}0 - exit program${NC}"
+	 echo -e "${GREEN}0 - exit programm${NC}"
 	 echo -e "${GREEN}Enter selection:${NC} "
 	read selection
 	echo -e ""
