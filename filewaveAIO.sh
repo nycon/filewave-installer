@@ -3,19 +3,28 @@
 #title          :filewaveAIO.sh
 #description    :Install and Update Script for Filewave.
 #author         :Marco Stoeckle dq-solutions
-#date           :2020-02-11
+#date           :2020-02-04
 #version        :0.1
 #usage          :./filewaveAIO.sh
 #notes          :
 #bash_version   :
 #============================================================================
-
+#============================================================================
+### Revision History:
+##
+##	Date	      Version			Personnel			Notes
+##	----	      -------			----------------	-----
+##	2020-02-04	  0.1			    Marco Stoeckle   	Script created
+##      2020-10-13	  0.2			    Marco Stoeckle	Script Add Migration
+##	
+#============================================================================
+#
 GREEN='\033[0;32m'
 NC='\033[0m'
 fwversion='fwcontrol server version'
 
 function download {
-	# Check the README for instructions
+	# not deposited for licensing reasons
   wget "https://xxx.xxxxxxxx/${version}/FileWave_Linux_${version}.zip"
 }
 
@@ -139,13 +148,54 @@ function install4 {
 	exit 0
 }
 
+function install5 {
+	echo -e "${GREEN}#-----------------------------------#${NC}"
+	echo -e ""
+	echo -e ""
+	echo -e "${GREEN}Filewave Migration${NC}"
+	echo -e ""
+	echo -e ""
+	echo -e "${GREEN}#-----------------------------------#${NC}"
+	echo -e "${GREEN}Download Filewave Backup Script${NC}"
+	sleep 2
+	wget https://kb.filewave.com/download/attachments/920198/backup_server_osx_linux.sh.zip
+	unzip backup_server_osx_linux.sh.zip
+	sleep 2
+	echo -e "${GREEN}Move Script to Root Directory${NC}"
+	sleep 2
+	chmod a+x backup_server_osx_linux.sh
+	echo -e "${GREEN}Enter the Backup Directory${NC}"
+	read -p "Backup Folder:" backup_folder
+	echo -e "${GREEN}Make Backup${NC}"
+	./backup_server_osx_linux.sh run $backup_folder manual
+	echo -e ""
+	echo -e ""
+	echo -e "Copy config Data to Backup"
+	cp /usr/local/filewave/django/filewave/settings_custom.py fw-backups/
+	cp /usr/local/filewave/fwcld/FileWaveClient.pkg fw-backups/
+	cp /etc/xdg/filewave/fwxserver.conf fw-backups/
+	echo -e "${GREEN}Create Backup zip${NC}"
+	zip -r fw-backups.zip fw-backups
+	echo -e "Backup Done"
+    echo -e ""
+    echo -e ""
+    echo -e ""
+    echo -e ""
+    echo -e ""
+    echo -e "Move Backup to new Server"
+    read -p "Ip from the new Server:" IP
+    read -p "User from the new Server:" user
+    scp -r  fw-backups.zip "$user"@"$IP":
+    exit 0
+}
+
 clear
 # Selection menu
 selection=
 until [ "$selection" = "0" ]; do
 	 echo -e -e "${GREEN}*-----------------------------------*${NC}"
 	 echo -e ""
-	 echo -e "${GREEN}Filewave installer for Linux${NC}"
+	 echo -e "${GREEN}FilewaveAIO installer for Linux${NC}"
 	 echo -e ""
 	 echo -e ""
 	 echo -e "${GREEN}*-----------------------------------*${NC}"
@@ -153,7 +203,8 @@ until [ "$selection" = "0" ]; do
 	 echo -e "${GREEN}2 - Installation Filewave Booster${NC}"
 	 echo -e "${GREEN}3 - Setup Filewave Backup Script${NC}"
 	 echo -e "${GREEN}4 - Filewave Update${NC}"
-	 echo -e "${GREEN}0 - exit programm${NC}"
+	 echo -e "${GREEN}5 - Filewave Migration to New Server${NC}"
+	 echo -e "${GREEN}0 - exit program${NC}"
 	 echo -e "${GREEN}Enter selection:${NC} "
 	read selection
 	echo -e ""
@@ -162,7 +213,8 @@ until [ "$selection" = "0" ]; do
 		2 )  install2 ;;
 		3 )  install3 ;;
 		4 )  install4 ;;
+		5 )  install5 ;;
 		0 ) exit & echo -e "${GREEN}the computer says no :-)${NC}";;
-		* ) echo -e "${GREEN}Please enter 1, 2, 3, 4 or 0${NC}"
+		* ) echo -e "${GREEN}Please enter 1, 2, 3, 4, 5 or 0${NC}"
 	esac
 done
