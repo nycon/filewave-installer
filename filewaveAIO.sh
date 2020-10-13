@@ -24,7 +24,7 @@ NC='\033[0m'
 fwversion='fwcontrol server version'
 
 function download {
-	# not deposited for licensing reasons
+	#Check the README for instructions
   wget "https://xxx.xxxxxxxx/${version}/FileWave_Linux_${version}.zip"
 }
 
