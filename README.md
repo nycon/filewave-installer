@@ -14,7 +14,7 @@ yum -y install git nano wget unzip
 ```bash
 *-----------------------------------*
 
-Filewave installer for Linux
+FilewaveAIO installer for Linux
 
 
 *-----------------------------------*
@@ -22,7 +22,9 @@ Filewave installer for Linux
 2 - Installation Filewave Booster
 3 - Setup Filewave Backup Script
 4 - Filewave Update
-0 - exit programm
+5 - Filewave Migration to New Server Alpha
+6 - Setup Let’s encrypt for Filewave
+0 - exit program
 Enter selection:
 ```
 ### Install Script
