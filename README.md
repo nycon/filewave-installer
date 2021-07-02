@@ -33,5 +33,5 @@ Enter selection:
 git clone https://github.com/nycon/filewave-installer.git
 cd filewave-installer.sh
 chmod +x 
-./FilewaveAIO.sh
+./filewaveAIO.sh
 ```
