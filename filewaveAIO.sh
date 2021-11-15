@@ -25,7 +25,7 @@ fwversion='fwcontrol server version'
 
 function download {
 	#Check the README for instructions
-  wget "https://fwdl.filewave.com/${version}/FileWave_Linux_${version}.zip"
+  wget "https://xx.xxxxxxx/${version}/FileWave_Linux_${version}.zip"
 }
 
 
